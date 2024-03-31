@@ -11,4 +11,4 @@ after seen the above image you can go to localhost on your browser and should se
 ![image](https://github.com/lcmartins/desafio_orquestracao_compose/assets/13166685/48d9bb92-65d1-4668-b16a-55004d37cd6e)
 
 
-so every time you refresh the page a new name is inserted and all records are retrieved from db
+so every time you refresh the page, nginx that is listening on port 80 proxies the call to node app (port 3000) and a new name is inserted and all records are retrieved from db
