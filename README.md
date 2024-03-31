@@ -1,5 +1,7 @@
-# RUN: docker-compose up -d --build
-## checking image result
+# This project is about having an app (node) that inserts and retrieves all records from people table in mysql and in from of that app we have another container (nginx) that proxies the call to / to node application
+
+## RUN: docker-compose up -d --build
+### checking image result
 for that after issue command: `docker ps` you should see an image like the bellwo
 
 ![image](https://github.com/lcmartins/desafio_orquestracao_compose/assets/13166685/4826940b-9aec-4f4d-9055-4e304881b48d)
