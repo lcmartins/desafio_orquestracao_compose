@@ -2,7 +2,7 @@
 
 ## RUN: docker-compose up -d --build
 ### checking image result
-for that after issue command: `docker ps` you should see an image like the bellwo
+for that after issue command: `docker ps` you should see an image like the bellow
 
 ![image](https://github.com/lcmartins/desafio_orquestracao_compose/assets/13166685/4826940b-9aec-4f4d-9055-4e304881b48d)
 
