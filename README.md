@@ -1,4 +1,4 @@
-# This project is about having an app (node) that inserts and retrieves all records from people table in mysql and serving that that app we have another container (nginx) that proxies the call to / to node application
+# This project is about having an app (node) that inserts and retrieves all records from people table in mysql and serving that that app we have another container (nginx) that proxies the call to node application
 
 ## RUN: docker-compose up -d --build
 ### checking image result
