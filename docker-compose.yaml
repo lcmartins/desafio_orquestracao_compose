@@ -35,14 +35,14 @@ services:
       - MYSQL_DATABASE=nodedb
       - MYSQL_ROOT_PASSWORD=root
     volumes:
-      - db:/var/lib/mysql
-      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./db:/docker-entrypoint-initdb.d
+
     networks:
       - three_containers_network  
 
 networks:
   three_containers_network:
-    driver: bridge
+    driver: bridge  
 volumes:
   db:
     driver: local
