@@ -2,8 +2,6 @@ FROM node:21.7.1 as builder
 
 WORKDIR /usr/src/app
 
-COPY ./index.js /usr/src/app/
-
 RUN chown -R node:node /usr/src/app/
 
 RUN npm install express

@@ -20,6 +20,8 @@ services:
       - three_containers_network
     tty: true
     container_name: app
+    volumes:
+      - ./node/index.js:/usr/src/app/index.js
     ports:
       - "3000:3000"
     entrypoint: dockerize -wait tcp://db:3306 -timeout 50s node index.js
