@@ -11,6 +11,7 @@ function sleep(ms) {
     setTimeout(resolve, ms);
   });
 }
+
 app.get('/', (req, res) => {
 
     const conn = mysql.createConnection({
@@ -23,7 +24,6 @@ app.get('/', (req, res) => {
     conn.connect(function (err) {
         if (err) throw err;
         var name = randomName()
-        console.log('NAME:::: ' + name)
         conn.query('insert into people(name) values(?)', [name],
             function (err, _, _) {
                 sleep(1000)
@@ -52,5 +52,5 @@ app.get('/', (req, res) => {
 
 
 app.listen(PORT, () => {
-    console.log('Rodando na porta ' + PORT)
+    console.log('Rodando na porta::::  ' + PORT)
 })

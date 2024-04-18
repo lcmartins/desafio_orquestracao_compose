@@ -1,4 +1,4 @@
-version: '3.4'
+version: '3.8'
 
 services:
 
@@ -10,21 +10,15 @@ services:
     container_name: nginx
     ports:
       - "80:80"
+    #entrypoint: dockerize -wait http://app:3000 -timeout 50s /docker-entrypoint.sh
     depends_on:
       - app
-
-  app:
-    build:
-      context: ./node
-    networks:
-      - three_containers_network
-    tty: true
-    container_name: app
-    ports:
-      - "3000:3000"
-    entrypoint: dockerize -wait tcp://db:3306 -timeout 50s node index.js
-    depends_on:
-      - db
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost || exit 1"]
+      interval: 2s
+      timeout: 2s
+      retries: 5
+      start_period: 1s
 
   db:
     image: mysql:5.7
@@ -37,8 +31,25 @@ services:
     volumes:
       - db:/var/lib/mysql
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "3306:3306"
     networks:
       - three_containers_network  
+
+  app:
+    build:
+      context: ./node
+    networks:
+      - three_containers_network
+    tty: true
+    container_name: app
+    volumes:
+      - ./node/index.js:/usr/src/app/index.js
+    ports:
+      - "3000:3000"
+    entrypoint: dockerize -wait tcp://db:3306 -timeout 20s node index.js
+
+
 
 networks:
   three_containers_network:
