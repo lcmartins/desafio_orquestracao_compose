@@ -52,5 +52,5 @@ app.get('/', (req, res) => {
 
 
 app.listen(PORT, () => {
-    console.log('Rodando na porta ' + PORT)
+    console.log('Rodando na porta::::: -> ' + PORT)
 })
